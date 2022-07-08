@@ -10,6 +10,8 @@ public class DemoApp {
         System.out.println();
         nodeList = reverse(nodeList);
         printLinkedList(nodeList);
-
+        System.out.println();
+        nodeList = recursiveReverse(nodeList);
+        printLinkedList(nodeList);
     }
 }

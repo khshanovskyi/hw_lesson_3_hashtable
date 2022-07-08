@@ -44,7 +44,7 @@ public class SmthLikeLinkedList {
         System.out.println();
         Objects.requireNonNull(head, "The [head] should be not null");
         Node<T> current = head;
-        Node<T> next = null;
+        Node<T> next;
         Node<T> previous = null;
 
         while (Objects.nonNull(current.getNext())) {
@@ -56,5 +56,25 @@ public class SmthLikeLinkedList {
         current.setNext(previous);
         previous = current;
         return previous;
+    }
+
+    public static <T> Node<T> recursiveReverse(Node<T> head){
+        if (Objects.isNull(head.getNext())){
+            return head;
+        }
+
+        Node<T> node = recursiveReverse(head.getNext());
+        Node<T> last = getLast(node);
+        Node<T> next = head;
+        next.setNext(null);
+        last.setNext(next);
+        return node;
+    }
+
+    private  static <T> Node<T> getLast(Node<T> node){
+        if (Objects.isNull(node.getNext())){
+            return node;
+        }
+        return node.getNext();
     }
 }
